@@ -10,7 +10,32 @@ BinarySearchTree.prototype = {
    */
 
   insert: function (node) {
+    if (this._is_empty()) {
+      this._root = node;
+      return true;
+    }
 
+    var y;
+    var x = this._root;
+
+    while ( x !== undefined ) {
+      y = x;
+      if ( node[this._key] < y[this._key] ) {
+        x = x.left;
+      }
+      else {
+        x = x.right;
+      }
+    }
+
+    node.parent = y;
+    
+    if ( node[this._key] < y[this._key]) {
+      y.left = node;
+    }
+    else {
+      y.right = node;
+    }
   },
 
   delete: function (key) {
@@ -55,6 +80,10 @@ BinarySearchTree.prototype = {
 
   _successor: function (x) {
 
+  },
+
+  _is_empty: function () {
+    return this._root ? false : true;
   }
 
 };
