@@ -9,6 +9,11 @@ BinarySearchTree.prototype = {
    * Public methods
    */
 
+  /**
+   * Inserts a new node into the tree
+   * @this {BinarySearchTree}
+   * @param {object} node The node to be inserted into the tree
+   */
   insert: function (node) {
     if (this._is_empty()) {
       this._root = node;
@@ -58,12 +63,38 @@ BinarySearchTree.prototype = {
 
   },
 
-  minimum: function(tree) {
+  /**
+   * Find the minimum of the tree rooted at the given node
+   * @this {BinarySearchTree}
+   * @param {Object} root The root of the tree to find the min of
+   */
+  minimum: function(root) {
+    if ( !root ) {
+      root = this._root;
+    }
 
+    while ( root.left ) {
+      root = root.left;
+    }
+
+    return root;
   },
 
-  maximum: function(tree) {
+  /**
+   * Find the maximum of the tree rooted at the given node
+   * @this {BinarySearchTree}
+   * @param {Object} root The root of the tree to find the max of
+   */
+  maximum: function(root) {
+    if ( !root ) {
+      root = this._root;
+    }
 
+    while ( root.right ) {
+      root = root.right;
+    }
+
+    return root;
   },
 
  /*
